@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+  "name": "Google Meet - Camera Off By Default",
+  "short_name": "GMCOBD",
+  "author": "Josh Iverson",
+  "version": "0.0.1",
+  "description": "Turns off the camera by default when starting google meet.",
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "icons": {
+    "16": "icon-16.png",
+    "48": "icon-48.png",
+    "128": "icon-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://meet.google.com/*"
+      ],
+      "js": [
+        "boot.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "tabs",
+    "activeTab"
+  ]
+}
