@@ -23,7 +23,8 @@
       ],
       "js": [
         "boot.js"
-      ]
+      ],
+      "run_at": "document_end"
     }
   ],
   "permissions": [
