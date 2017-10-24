@@ -9,15 +9,16 @@
             if (!mutation.addedNodes) return
 
             mutation.addedNodes.forEach(node => {
-                if (node.nodeType === Node.TEXT_NODE && node.data.indexOf('Camera is starting') > -1) {
-                    cameraStarted = true
-                    turnOffCamera()
-                }
-
                 if (node.nodeType === Node.ELEMENT_NODE) {
                     let btn = node.querySelector(cameraBtnSelector)
-                    if (btn) {
+
+                    if (btn && !cameraBtn) {
                         cameraBtn = btn
+                        turnOffCamera()
+                    }
+
+                    if(node.nodeName === 'VIDEO') {
+                        cameraStarted = true
                         turnOffCamera()
                     }
                 }
