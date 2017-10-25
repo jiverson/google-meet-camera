@@ -12,12 +12,14 @@
                 if (node.nodeType === Node.ELEMENT_NODE) {
                     let btn = node.querySelector(cameraBtnSelector)
 
-                    if (btn && !cameraBtn) {
+                    if (btn) {
+                        console.log('1 --> camera found')
                         cameraBtn = btn
                         turnOffCamera()
                     }
 
                     if(node.nodeName === 'VIDEO') {
+                        console.log('2 --> video found')
                         cameraStarted = true
                         turnOffCamera()
                     }
@@ -42,6 +44,8 @@
     function turnOffCamera() {
         if (!cameraStarted || !cameraBtn) return
         disconnectObserver()
+
+        console.log('3 --> turn off camera')
 
         // unused
         let timeout = parseInt(cameraBtn.getAttribute(delayAttr), 10) / 2
